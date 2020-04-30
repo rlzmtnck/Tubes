@@ -7,13 +7,11 @@ void createListParent(List_Parent &L) {
 
 void inputDataLapas(List_Parent L, infotypeParent &in){
     cout<<"Nama Lapas: ";
-    cin.get();
-    getline(cin,in.namaLapas);
+    cin>>in.namaLapas;
     while (findElmParent(L , in.namaLapas) != NULL ) {
         cout<<"Lapas sudah ada. Input kembali."<<endl;
         cout<<"Nama Lapas: ";
-        cin.get();
-        getline(cin,in.namaLapas);
+        cin>>in.namaLapas;
     }
     cout<<"Ukuran Lapas: ";
     cin >> in.luasLapas;
@@ -55,9 +53,8 @@ void insertAfterParent(List_Parent &L, address_parent Prec, address_parent P){
 
 void insertLastParent(List_Parent &L, address_parent P){
     P -> next = L.first;
-    P -> prev = L.first -> prev;
-    L.first -> prev -> next = P;
     L.first -> prev = P;
+    L.first = P;
 }
 
 void insertSortedParent(List_Parent &L, infotypeParent in){

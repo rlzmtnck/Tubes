@@ -52,7 +52,7 @@ int main()
         cout<<"Pilihan menu: ";
         cin>>pilih;
         cout<<endl<<endl;
-    system("CLS");
+        system("CLS");
         switch (pilih){
             case 1 :
                 inputDataLapas(List_Parent,DataLapas);
@@ -70,11 +70,10 @@ int main()
                 break;
             case 5 :
                 cout<<"Nama Lapas:";
-                cin.get();
-                getline(cin,DataLapas.namaLapas);
+                cin>>DataLapas.namaLapas;
                 P = findElmParent(List_Parent,DataLapas.namaLapas);
                 cout<<"Nama Tahanan:";
-                getline(cin,DataTahanan.namaTahanan);
+                cin>>DataTahanan.namaTahanan;
                 Q = findElmChild(List_Child,DataTahanan.namaTahanan);
                 if (P != NULL && Q != NULL){
                     R = CreateElmRelasi(P,Q);
@@ -99,8 +98,7 @@ int main()
                 break;
             case 9 :
                 cout<<"Nama lapas: ";
-                cin.get();
-                getline(cin,DataLapas.namaLapas);
+                cin>>DataLapas.namaLapas;
                 P = findElmParent(List_Parent,DataLapas.namaLapas);
                 R = findElmRelasiParent(List_Relasi,DataLapas.namaLapas);
                 if (P != NULL){
@@ -115,10 +113,9 @@ int main()
                 break;
             case 10 :
                 cout<<"Nama Tahanan:"<<endl;
-                cin.get();
-                getline(cin,DataTahanan.namaTahanan);
+                cin>>DataTahanan.namaTahanan;
                 Q = findElmChild(List_Child,DataTahanan.namaTahanan);
-                R = findElmRelasiChild(List_Relasi,DataLapas.namaLapas);
+                R = findElmRelasiChild(List_Relasi,DataTahanan.namaTahanan);
                 if (Q != NULL){
                     if (R != NULL){
                         deleteAllRelasiChild(List_Relasi,Q);
@@ -131,17 +128,16 @@ int main()
                 break;
             case 11 :
                 cout<<"Nama Lapas:";
-                cin.get();
-                getline(cin,DataLapas.namaLapas);
+                cin>>DataLapas.namaLapas;
+                P = findElmParent(List_Parent,DataLapas.namaLapas);
                 cout<<"Nama Tahanan:";
-                cin.get();
-                getline(cin,DataTahanan.namaTahanan);
-                deleteSpesificRelasi(List_Relasi,DataLapas.namaLapas,DataTahanan.namaTahanan);
+                cin>>DataTahanan.namaTahanan;
+                Q = findElmChild(List_Child,DataTahanan.namaTahanan);
+                deleteSpesificRelasi(List_Relasi,P,Q);
                 break;
             case 12 :
                 cout<<"ID Lapas:";
-                cin.get();
-                getline(cin,DataLapas.IDLapas);
+                cin>>DataLapas.IDLapas;
                 P = findElmParent(List_Parent,DataLapas.IDLapas);
                 if (P != NULL) {
                     cout<<"Lapas: "<<P -> info.namaLapas<<endl;
@@ -159,8 +155,7 @@ int main()
 
             case 13 :
                 cout<<"ID Tahanan:";
-                cin.get();
-                getline(cin,DataTahanan.IDTahanan);
+                cin>>DataTahanan.IDTahanan;
                 Q = findElmChild(List_Child,DataTahanan.IDTahanan);
                 if (Q != NULL){
                     cout<<"Nama:"<<Q -> info.namaTahanan<<endl;
@@ -174,14 +169,9 @@ int main()
                     cout<<DataTahanan.namaTahanan<<" belum terdaftar."<<endl;
                 }
                 break;
-            default:
-                cout<<"************************************"<<endl;
-                cout<<"Maaf nilai yang anda masukkan salah"<<endl;
-                cout<<"       Silahkan ulangi lagi :) "<<endl;
-                cout<<"*************************************"<<endl<<endl;
         }
         cout<<endl;
-        cout<<"Klik apapun untuk melanjutkan."<<endl;
+        cout<<"Program berhasil dilakukan. Klik apapun untuk melanjutkan."<<endl;
         cin.get();
         getline(cin,any);
         system("CLS");
